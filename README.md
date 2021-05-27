@@ -11,5 +11,5 @@ corresponding to all four digits are shown and the process repeats in a cycle.</
 
 ![Circuit diagram](https://github.com/asitha-navaratne/Display-number-4dig-SSD/blob/master/4digSSD.jpg?raw=true)
 
-<p align="justify">Transistors are used to control the connection of each digit to GND or to VCC. When using transistors, make sure to connect current limiting resistors between
+<p align="justify">Transistors are used to control the connection of each digit to GND or to VCC. When using transistors, make sure to connect a current limiting resistor between
 the base of the transistor and the microcontroller to protect the components from sudden high currents (these resistors are not shown in the diagram).</p>
