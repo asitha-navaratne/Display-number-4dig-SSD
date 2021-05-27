@@ -21,38 +21,40 @@ uint8_t dig[4];											///< Array to hold individual digits of the value to b
 int main(void){
 	PORT_INIT();
 	float value = 185.2;								///< Value to be displayed.
+	
 	uint16_t displayValue = 0;							///< Variable to hold the display value converted to an integer.
 	uint8_t decimalPoint = 0;
 	
+	if(0.001<value && value<0.01){
+		decimalPoint = 1;
+		displayValue = value*1000;
+	}
+	else if(0.01<value && value<0.1){
+		decimalPoint = 1;
+		displayValue = value*1000;
+	}
+	else if(0.1<value && value<1){
+		decimalPoint = 1;
+		displayValue = value*1000;
+	}
+	else if(1<value && value<10){
+		decimalPoint = 1;
+		displayValue = value*1000;
+	}
+	else if(10<value && value<100){
+		decimalPoint = 2;
+		displayValue = value*100;
+	}
+	else if(100<value && value<1000){
+		decimalPoint = 3;
+		displayValue = value*10;
+	}
+	else if(value>1000){
+		decimalPoint = 4;
+	}
+	DECODE_SSD(displayValue);
+	
 	while(1){
-		if(0.001<value && value<0.01){
-			decimalPoint = 1;
-			displayValue = value*1000;
-		}
-		else if(0.01<value && value<0.1){
-			decimalPoint = 1;
-			displayValue = value*1000;
-		}
-		else if(0.1<value && value<1){
-			decimalPoint = 1;
-			displayValue = value*1000;
-		}
-		else if(1<value && value<10){
-			decimalPoint = 1;
-			displayValue = value*1000;
-		}
-		else if(10<value && value<100){
-			decimalPoint = 2;
-			displayValue = value*100;
-		}
-		else if(100<value && value<1000){
-			decimalPoint = 3;
-			displayValue = value*10;
-		}
-		else if(value>1000){
-			decimalPoint = 4;
-		}
-		DECODE_SSD(displayValue);
 		DISPLAY_SSD(decimalPoint);
 	}
 }
